@@ -49,7 +49,7 @@ a("[💙] Đã Gửi Toàn Bộ Lệnh Tới Bạn UwU. [❗]\n\ - Check Tin Nh�
 		group.forEach(commandGroup => msg += `「 ${commandGroup.group.charAt(0).toUpperCase() + commandGroup.group.slice(1)} 」\n${commandGroup.cmds.join(', ')}\n\n`);
 		
 		return api.sendMessage(msg + `[ Sử dụng: "${(threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : global.config.PREFIX}help từng lệnh ở trên" để xem chi tiết cách sử dụng! | Hiện tại đang có ${commands.size} lệnh có thể sử dụng trên bot này ]`, event.senderID, (err, info) =>
-        setTimeout(() => {api.unsendMessage(info.messageID) } , 45000));
+        setTimeout(() => {api.unsendMessage(info.messageID) } , 100000));
 
 
 	}
