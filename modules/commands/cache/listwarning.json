@@ -1,1 +1,18 @@
-{}
+{
+    "100023260786590": {
+        "warningLeft": 0,
+        "warningReason": [
+            "chửi cc",
+            "khạn ngu",
+            "chửi cc"
+        ],
+        "banned": true
+    },
+    "100054857474455": {
+        "warningLeft": 2,
+        "warningReason": [
+            "ngu cc"
+        ],
+        "banned": false
+    }
+}
