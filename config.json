@@ -74,5 +74,11 @@
     },
     "log": {
         "enable": true
+    },
+    "sim2": {
+        "APIKEY": ""
+    },
+    "teach": {
+        "APIKEY": ""
     }
 }

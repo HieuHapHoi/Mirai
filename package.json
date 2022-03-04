@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node index",
 		"login": "node login",
-		"test": "node --trace-warnings --use_strict --async-stack-traces mirai"
+		"test": "node --trace-warnings --use_strict --async-stack-traces mirai",
+		"dev": "npm start"
 	},
 	"repository": {
 		"type": "git",
@@ -29,7 +30,6 @@
 	},
 	"homepage": "https://github.com/miraipr0ject/miraiv2#readme",
 	"dependencies": {
-		"express": "",
 		"axios": "",
 		"body-parser": "",
 		"caesar-salad": "",
@@ -39,20 +39,22 @@
 		"child_process": "",
 		"crypto": "",
 		"eval": "",
+		"express": "",
 		"extract-zip": "",
-		"sieudangyeu": "",
 		"figlet": "",
 		"fs-extra": "",
 		"jimp": "",
 		"minimist": "",
 		"moment-timezone": "",
 		"ms": "",
+		"nodemon": "^2.0.15",
 		"npmlog": "",
 		"path": "",
 		"readline": "",
 		"request": "",
 		"semver": "",
 		"sequelize": "",
+		"sieudangyeu": "",
 		"sqlite3": "",
 		"string-similarity": "",
 		"totp-generator": ""
