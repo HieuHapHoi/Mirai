@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "Siêu Đáng Yêu",
   description: "Projec M4a.",
   commandCategory: "Hình Ảnh",
-  usages: "panclose",
+  usages: "nsfw",
   cooldowns: 3,
   dependencies: {
     "request":"",

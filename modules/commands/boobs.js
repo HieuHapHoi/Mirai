@@ -1,11 +1,11 @@
 module.exports.config = {
-    name: "bb",
+    name: "boobs",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "Siêu Đáng Yêu",
     description: "Project DN.07.",
-    commandCategory: "Hình Ảnh",
-    usages: "bb",
+    commandCategory: "nsfw",
+    usages: "boobs",
     cooldowns: 3,
     dependencies: {
       "request":"",

@@ -5,7 +5,7 @@ module.exports.config = {
   credits: "Siêu Đáng Yêu",
   description: "Project DN.07.",
   commandCategory: "Hình Ảnh",
-  usages: "pantsu",
+  usages: "nsfw",
   cooldowns: 3,
   dependencies: {
     "request":"",
