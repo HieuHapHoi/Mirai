@@ -1,4 +1,4 @@
-appstate.json
+modules/
 .env
 .npm
 *.tgz
@@ -9,5 +9,4 @@ appstate.json
 logs/
 node_modules/
 includes/data.sqlite
-fbstate.json
-moudules/commands/cache/picture/*.png
+appstate.json
