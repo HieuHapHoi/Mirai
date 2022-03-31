@@ -1,0 +1,18 @@
+{
+    "name": "Hiếu Gia",
+    "ID": "100045197073985",
+    "shield": 3,
+    "coins": 5200,
+    "Island": {
+        "level": 1,
+        "coinsLV": 200,
+        "data": {
+            "tower": 10,
+            "tree": 0,
+            "pool": 0,
+            "pet": 0
+        }
+    },
+    "spin": 22,
+    "timeRegister": "13:25:50, 30/3/2022"
+}
