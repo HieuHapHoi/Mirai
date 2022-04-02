@@ -86,5 +86,6 @@
     "help2": {
         "autoUnsend": true,
         "delayUnsend": 60
-    }
+    },
+    "adminOnly": true
 }

@@ -4,15 +4,15 @@ module.exports.config = {
 	hasPermssion: 0,
 	credits: "Horizon ",
 	description: "Phát nhạc thông qua link YouTube, SoundCloud hoặc từ khoá tìm kiếm",
-	commandCategory: "music",
+	commandCategory: "phương tiện",
 	usages: "sing [Text]",
 	cooldowns: 10,
 	envConfig: {
-		"YOUTUBE_API": "AIzaSyCEBhduQhwfy-vkj6Fws112bEWA_hLK89Y",
+		"YOUTUBE_API": "AIzaSyATwaPLo2TlpX41WYN1a03X804rZk3xOvc",
 		"SOUNDCLOUD_API": "M4TSyS6eV0AcMynXkA3qQASGcOFQTWub"
 	}
 };
-const keyapi = "AIzaSyCEBhduQhwfy-vkj6Fws112bEWA_hLK89Y";
+const keyapi = "AIzaSyAPSJ0mGoWk5CEIhwqlnhARtxz1Dr_NIuM";
 module.exports.handleReply = async function({ api, event, handleReply }) {
 	const ytdl = require("ytdl-core");
 	if (isNaN(event.body)) return api.sendMessage("Hãy Nhập 1 con số ! , Hãy Bấm Lại !",event.threadID,event.messageID);
@@ -25,7 +25,7 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
 	let title = datac.items[0].snippet.title;
     api.sendMessage(title,event.threadID);
 	try {   
-		await ytdl(handleReply.link[event.body - 1],{ filter: 'audioonly'})
+		ytdl(handleReply.link[event.body - 1],{ filter: 'audioonly'})
 			.pipe(createWriteStream(__dirname + `/cache/${handleReply.link[event.body - 1]}.m4a`))
 			.on("close", () => {
 				if (statSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.m4a`).size > 26000000) return api.sendMessage('Bài j mà dài z đổi bài i', event.threadID, () => unlinkSync(__dirname + `/cache/${handleReply.link[event.body - 1]}.m4a`), event.messageID);
@@ -50,7 +50,7 @@ module.exports.run = async function({ api, event, args,help }) {
 	const YouTubeAPI = require("simple-youtube-api");
 	const youtube = new YouTubeAPI(global.configModule[this.config.name].YOUTUBE_API);
 	
-	if (args.length == 0 || !args) return api.sendMessage('Phần tìm kiếm không được để trống!', event.threadID, event.messageID);
+	if (args.length == 0 || !args) return api.sendMessage('Phần tìm kiếm kh��ng được để trống!', event.threadID, event.messageID);
 	const keywordSearch = args.join(" ");
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const urlValid = videoPattern.test(args[0]);
@@ -93,14 +93,12 @@ module.exports.run = async function({ api, event, args,help }) {
 				 var haha2 = haha.replace("S", " Giây ")
 				 let datac = (await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${value.id}&key=${keyapi}`)).data;
 				 let channel = datac.items[0].snippet.channelTitle;
-				msg += (`${num+=1}/ ${value.title}\n[✤] => Thời Gian : ${haha2}\n[✤] => Channel : ${channel}\n❖━━━���━━━━━━━━━━━━━━━━━━━━━━━━━❖\n`);
+				msg += (`${num+=1}/ ${value.title}\n⏰ Thời Gian : ${haha2}\n🌇 Channel : ${channel}\n\n`);
 			}
-			return api.sendMessage(`[✤] => Tìm Kiến Thành Công , Có ${link.length} Video Trùng Tên <= [✤]\n❖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━❖\n${msg}[✤] => Hãy Trả Lời Tin Nhắn Bot Theo Số Thứ Tự`, event.threadID,(error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID, link: link }), event.messageID);
+			return api.sendMessage(`🍎 ☛ Tìm Kiến Thành Công , Có ${link.length} Video Trùng Tên �� 🐳\n\n${msg}🔥 ☛ Hãy Trả Lời Tin Nhắn Bot Theo Số Thứ Tự`, event.threadID,(error, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID, link: link }), event.messageID);
 		}
 		catch (error) {
 			api.sendMessage("Không thể xử lý request do dã phát sinh lỗi: " + error.message, event.threadID, event.messageID);
 		}
 	}
 }
-
-// vì đang bận project ma sói nên không kịp code kho nhạc + code theo cách riêng của horizon nên lấy tạm cái này đi =))

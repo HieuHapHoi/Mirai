@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.run = async function({ api, event }) {
 	
 	const axios = require("axios");
-	const res = await axios.get("https://randomlinkapi.do-giagia1.repl.co/emilia");
+	const res = await axios.get("https://randomlinkapi.do-giagia1.repl.co/emiliaimage");
 	const request = require("request");
 	const fs = require("fs");
 
