@@ -4,7 +4,6 @@ const http = require("http");
 const axios = require("axios");
 const semver = require("semver");
 const logger = require("./utils/log");
-const { BOTNAME } = require("./config.json")
 
 /////////////////////////////////////////////
 //========= Check node.js version =========//
@@ -22,21 +21,20 @@ const { BOTNAME } = require("./config.json")
 
 const dashboard = http.createServer(function (_req, res) {
     res.writeHead(200, "OK", { "Content-Type": "text/plain" });
-    res.write("Hi Im HieuHapHoi. This is my bot Emilia. \nBot Source: MiraiBypassD-Jukie")
-    
+    res.write("HI! THIS BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯");
     res.end();
 });
 
 dashboard.listen(process.env.port || 0);
 
-logger("Đã mở máy chủ của bot", "[ Bắt Đầu ]");
+logger("Opened server site...", "[ Starting ]");
 
 /////////////////////////////////////////////////////////
 //========= Create start bot and make it loop =========//
 /////////////////////////////////////////////////////////
 
 function startBot(message) {
-    (message) ? logger(message, "[ Bắt Đầu ]") : "";
+    (message) ? logger(message, "[ Starting ]") : "";
 
     const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "mirai.js"], {
         cwd: __dirname,
@@ -46,14 +44,14 @@ function startBot(message) {
 
     child.on("close", (codeExit) => {
         if (codeExit != 0 || global.countRestart && global.countRestart < 5) {
-            startBot("Đang khởi động lại bot...");
+            startBot("Restarting...");
             global.countRestart += 1;
             return;
         } else return;
     });
 
     child.on("error", function (error) {
-        logger("Đã có 1 lỗi xảy ra: " + JSON.stringify(error), "[ Lỗi ]");
+        logger("An error occurred: " + JSON.stringify(error), "[ Starting ]");
     });
 };
 ////////////////////////////////////////////////
@@ -66,13 +64,6 @@ axios.get("https://raw.githubusercontent.com/d-jukie/miraiv2/main/package.json")
     logger("Version: " + res['data']['version'], "[ VERSION ]");
     logger(res['data']['description'], "[ DESCRIPTION ]");
 });
-
-////////////////////////////////////////////////////
-//========= Print bot's name from Config =========//
-////////////////////////////////////////////////////
-
-logger(BOTNAME, "[ BOTNAME ]")
-;
 startBot();
 /*axios.get("https://raw.githubusercontent.com/d-jukie/miraiv2_fix/main/package.json").then((res) => {
     const local = JSON.parse(readFileSync('./package.json'));

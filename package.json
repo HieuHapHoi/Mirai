@@ -25,11 +25,11 @@
         "crypto": "",
         "eval": "",
         "extract-zip": "",
-        "fca-horizon-remake": "^4.5.5",
         "figlet": "",
         "fs-extra": "",
         "helyt": "",
         "jimp": "",
+        "lawerpr0ject-api": "^1.7.4",
         "minimist": "",
         "moment": "^2.29.1",
         "moment-timezone": "",
@@ -40,10 +40,8 @@
         "request": "",
         "semver": "",
         "sequelize": "",
-        "simple-youtube-api": "^5.2.1",
         "sqlite3": "",
         "string-similarity": "",
-        "totp-generator": "",
-        "ytdl-core": "^4.11.0"
+        "totp-generator": ""
     }
 }

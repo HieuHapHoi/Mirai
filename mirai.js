@@ -6,7 +6,7 @@ const { readdirSync, readFileSync, writeFileSync, existsSync, unlinkSync, rm } =
 const { join, resolve } = require("path");
 const { execSync } = require('child_process');
 const logger = require("./utils/log.js");
-const login = require("helyt");
+const login = require("lawerpr0ject-api");
 const axios = require("axios");
 const listPackage = JSON.parse(readFileSync('./package.json')).dependencies;
 const listbuiltinModules = require("module").builtinModules;
@@ -48,7 +48,6 @@ global.moduleData = new Array();
 
 global.language = new Object();
 
-
 //////////////////////////////////////////////////////////
 //========= Find and get variable from Config =========//
 /////////////////////////////////////////////////////////
@@ -57,22 +56,22 @@ var configValue;
 try {
     global.client.configPath = join(global.client.mainPath, "config.json");
     configValue = require(global.client.configPath);
-    logger.loader("Đã tìm thấy file config: config.json!");
+    logger.loader("Found file config: config.json");
 }
 catch {
     if (existsSync(global.client.configPath.replace(/\.json/g,"") + ".temp")) {
         configValue = readFileSync(global.client.configPath.replace(/\.json/g,"") + ".temp");
         configValue = JSON.parse(configValue);
-        logger.loader(`Đã tìm thấy: ${global.client.configPath.replace(/\.json/g,"") + ".temp"}`);
+        logger.loader(`Found: ${global.client.configPath.replace(/\.json/g,"") + ".temp"}`);
     }
-    else return logger.loader("Không tìm thấy file config: config.json!", "error");
+    else return logger.loader("config.json not found!", "error");
 }
 
 try {
     for (const key in configValue) global.config[key] = configValue[key];
-    logger.loader("Đã tải xong file config!");
+    logger.loader("Config Loaded!");
 }
-catch { return logger.loader("Không thể tải file config!", "error") }
+catch { return logger.loader("Can't load file config!", "error") }
 
 const { Sequelize, sequelize } = require("./includes/database");
 
@@ -97,7 +96,7 @@ for (const item of langData) {
 
 global.getText = function (...args) {
     const langText = global.language;    
-    if (!langText.hasOwnProperty(args[0])) throw `${__filename} Không tìm thấy key language ${args[0]}`;
+    if (!langText.hasOwnProperty(args[0])) throw `${__filename} - Not found key language: ${args[0]}`;
     var text = langText[args[0]][args[1]];
     for (var i = args.length - 1; i > 0; i--) {
         const regEx = RegExp(`%${i}`, 'g');
@@ -380,15 +379,9 @@ function onBot({ models }) {
         const models = require('./includes/database/model')(authentication);
         logger(global.getText('mirai', 'successConnectDatabase'), '[ DATABASE ]');
         const botData = {};
-        botData.models = models;
+        botData.models = models
         onBot(botData);
     } catch (error) { logger(global.getText('mirai', 'successConnectDatabase', JSON.stringify(error)), '[ DATABASE ]'); }
 })();
-////////////////////////////////////
-//========= Print LOGO =========///
-///////////////////////////////////
-// printlogo();
-// process.on('unhandledRejection', (err, p) => {});
-
 
 //THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯

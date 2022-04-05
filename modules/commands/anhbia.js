@@ -31,22 +31,22 @@ module.exports.config = {
       msg += `Hiện tại có ${count} nhân vật\nSố trang (${page}/${numPage})\nDùng ${global.config.PREFIX}banneranime list <số trang>`;
       return api.sendMessage(msg, event.threadID)
     }
-    //   else if (args[0] == "color") {
-    //       var callback = () => api.sendMessage({body:`của bạn đây UwU`,attachment: fs.createReadStream(__dirname + "/cache/taoanhdep.png")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/taoanhdep.png"),event.messageID); 
-    //      return request(encodeURI(`https://www.studytienganh.vn/upload/2017/08/40.jpg`)).pipe(fs.createWriteStream(__dirname+'/cache/taoanhdep.png')).on('close',() => callback());    
-    //   } else if(args[0] == "find"){
-    //      const ress = await axios.get('https://dino-1.araxy.repl.co/data3')
-    //     var nhanvat = args[1]
-    //     const data2 = ress.data.anime[nhanvat - 1].imgAnime
-    //     var imag = (await axios.get(`${data2}`, {
-    //         responseType: "stream"
-    //       })).data;
-    //       var msg = {
-    //         body: 'Ảnh Của Bạn Đây',
-    //         attachment: imag
-    //       }
-    //     return api.sendMessage(msg, threadID, messageID)
-    //   }
+      else if (args[0] == "color") {
+          var callback = () => api.sendMessage({body:`của bạn đây UwU`,attachment: fs.createReadStream(__dirname + "/cache/taoanhdep.png")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/taoanhdep.png"),event.messageID); 
+         return request(encodeURI(`https://www.studytienganh.vn/upload/2017/08/40.jpg`)).pipe(fs.createWriteStream(__dirname+'/cache/taoanhdep.png')).on('close',() => callback());    
+      } else if(args[0] == "find"){
+         const ress = await axios.get('https://dino-1.araxy.repl.co/data3')
+        var nhanvat = args[1]
+        const data2 = ress.data.anime[nhanvat - 1].imgAnime
+        var imag = (await axios.get(`${data2}`, {
+            responseType: "stream"
+          })).data;
+          var msg = {
+            body: 'Ảnh Của Bạn Đây',
+            attachment: imag
+          }
+        return api.sendMessage(msg, threadID, messageID)
+      }
     else {
       return api.sendMessage(`Vui lòng reply tin nhắn này để nhập ID nhân vật [ ARAXY ]`, event.threadID, (err, info) => {
         return global.client.handleReply.push({
